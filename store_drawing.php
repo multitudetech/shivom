@@ -7,16 +7,16 @@ error_reporting(E_ALL);
 include_once "db.php"; //include db file
 include_once "functions.php"; // include function file
 if(isset($_POST)){
-	if(isset($_POST['drg_type'])&&$_POST['drg_type']!=''){
-		$drg_type = $_POST['drg_type'];
+	if(isset($_POST['drawing_no'])&&$_POST['drawing_no']!=''){
+		$drawing_no = $_POST['drawing_no'];
 	}else{
-		$_SESSION['error'] = "Enter Drawing Type";
+		$_SESSION['error'] = "Enter Drawing No";
 		error_drg();
 	}
-	if(isset($_POST['drg_no'])&&$_POST['drg_no']!=''){
-		$drg_no = $_POST['drg_no'];
+	if(isset($_POST['customer_drawing_no'])&&$_POST['customer_drawing_no']!=''){
+		$customer_drawing_no = $_POST['customer_drawing_no'];
 	}else{
-		$_SESSION['error'] = "Enter Drg No";
+		$_SESSION['error'] = "Enter Customer Drawing No";
 		error_drg();
 	}
 	if(isset($_POST['description'])&&$_POST['description']!=''){
@@ -26,8 +26,8 @@ if(isset($_POST)){
 		error_drg();
 	}
 
-	$insert_query = "INSERT INTO drawing (`drg_type`, `drg_no`, `description`)
-				VALUES ('".$drg_type."', '".$drg_no."', '".$description."');";
+	$insert_query = "INSERT INTO drawing (`drawing_no`, `customer_drawing_no`, `description`)
+				VALUES ('".$drawing_no."', '".$customer_drawing_no."', '".$description."');";
 	mysqli_query($con, $insert_query);
 
 	$_SESSION['success'] = "Drawing Successfully Added";

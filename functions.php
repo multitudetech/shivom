@@ -1,13 +1,23 @@
 <?php
 //at error redirect to index page
 function error(){
-	header("Location: http://localhost:8081/shivom/index.php");
+	if(!isset($_SERVER['HTTP_REFERER'])){
+		header('Location: ' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+	}
+	else{
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+	}
 	exit();	
 }
 
 //at error redirect to index page
 function error_drg(){
-	header("Location: http://localhost:8081/shivom/add_drawing.php");
+	if(!isset($_SERVER['HTTP_REFERER'])){
+		header('Location: ' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+	}
+	else{
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+	}
 	exit();	
 }
 
@@ -15,6 +25,16 @@ function error_drg(){
 function success(){
 	header("Location: http://localhost:8081/shivom/index.php");
 	exit();	
+}
+
+function redirect(){
+	if(!isset($_SERVER['HTTP_REFERER'])){
+		header('Location: ' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+	}
+	else{
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+	}
+	exit();
 }
 
 //call for convert date to DB format

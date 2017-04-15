@@ -1,7 +1,30 @@
 .mt-1 {
 	margin-top: 5px;
 }
+.mt-4 {
+	margin-top: 20px;
+}
 .input-group-addon
 {
     background-color:#FFF;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+/*th {
+    background-color: #337ab7;
+    color: white;
+}*/
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
