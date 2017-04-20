@@ -908,10 +908,184 @@ $('#final_inr').keyup(function(){
 	var percentage = final_inr*100/material_vabour_cost-100;
 	$('#percentage').val(percentage);
 });
+
 $('#quentity').keyup(function(){
 	var quentity = $('#quentity').val();
 	var solid_wait = $('#solid_wait').val();
 	var rod_kg = quentity*solid_wait/100;
 	$('#rod_kg').val(rod_kg);
 });
+
+$('#rod_rate').keyup(function(){
+	var rod_rate = $('#rod_rate').val();
+	var solid_wait = $('#solid_wait').val();
+	var solid_amount = rod_rate*solid_wait;
+	$('#solid_amount').val(solid_amount.toFixed(3));
+});
+
+$('#chips_wait').keyup(function(){
+	var chips_rate = $('#chips_rate').val();
+	var chips_wait = $('#chips_wait').val();
+	var chips_reclaim = chips_rate*chips_wait;
+	$('#chips_reclaim').val(chips_reclaim.toFixed(3));
+});
+
+$('#solid_amount').keyup(function(){
+	var solid_amount = $('#solid_amount').val();
+	var chips_reclaim = $('#chips_reclaim').val();
+	var net_material_amount = solid_amount-chips_reclaim;
+	$('#net_material_amount').val(net_material_amount.toFixed(3));
+});
+
+$('#chips_reclaim').keyup(function(){
+	var solid_amount = $('#solid_amount').val();
+	var chips_reclaim = $('#chips_reclaim').val();
+	var net_material_amount = solid_amount-chips_reclaim;
+	$('#net_material_amount').val(net_material_amount.toFixed(3));
+});
+
+$('#net_material_amount').keyup(function(){
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+});
+
+$('#total_labour').keyup(function(){
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+});
+
+$('#pf_20_per').keyup(function(){ //doubt
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+});
+
+$('#total_labour_pf').keyup(function(){
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+});
+
+$('#platting_amount').keyup(function(){
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+});
+
+$('#material_vabour_cost').keyup(function(){
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
+});
+
+$('#total_pcs').keyup(function(){
+	var time_of_mfg = $('#time_of_mfg').val();
+	var total_pcs = $('#total_pcs').val();
+	var pcs_per_hour = total_pcs/time_of_mfg;
+	$('#pcs_per_hour').val(pcs_per_hour.toFixed(3));
+});
+
+$('#pcs_per_hour').keyup(function(){
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	var kg_per_hour = per_pcs_labour*pcs_per_hour;
+	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	var per_days_hour = $('#per_days_hour').val();
+	var pcs_per_23_hrs = pcs_per_hour*per_days_hour;
+	$('#pcs_per_23_hrs').val(pcs_per_23_hrs.toFixed(0));
+
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	$('#cnc_production_count').val(pcs_per_hour);
+});
+
+$('#pcs_per_23_hrs').keyup(function(){
+	var quentity = $('#quentity').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var days = quentity/pcs_per_23_hrs;
+	$('#days').val(days.toFixed(3));
+
+	var month_per_day = $('#month_per_day').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var total_pcs_25_days = month_per_day*pcs_per_23_hrs;
+	$('#total_pcs_25_days').val(total_pcs_25_days.toFixed(3));
+});
+
+$('#total_pcs_25_days').keyup(function(){
+	var cnc_exp_month = $('#cnc_exp_month').val();
+	var total_pcs_25_days = $('#total_pcs_25_days').val();
+	var per_pcs_labour = cnc_exp_month/total_pcs_25_days;
+	$('#per_pcs_labour').val(per_pcs_labour.toFixed(3));
+});
+
+$('#per_pcs_labour').keyup(function(){
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	var kg_per_hour = per_pcs_labour*pcs_per_hour;
+	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+});
+
+$('#wait_per_100_pcs').keyup(function(){
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+});
+
+$('#labour_per_kg').keyup(function(){
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+});
+
+$('#days').keyup(function(){
+	var days = $('#days').val();
+	var holidays = $('#holidays').val();
+	var weekly_off = $('#weekly_off').val();
+	var start_date = $('#start_date').val().split("/");
+	days = parseInt(days, 10);
+	holidays = parseInt(holidays, 10);
+	weekly_off = parseInt(weekly_off, 10);
+	var myDate = new Date(start_date[2], start_date[1], start_date[0]);
+	myDate.setDate(myDate.getDate() + holidays + days + weekly_off);
+	var dd = myDate.getDate();
+	var mm = myDate.getMonth();
+	var yyyy = myDate.getFullYear();
+	if(dd<10){
+	    dd='0'+dd; //day formater
+	}
+	if(mm<10){
+	    mm='0'+mm; //month formater
+	}
+	$('#end_date').val(dd+'/'+mm+'/'+yyyy);
+});
+
+
 //script for cost calculation sheet end
