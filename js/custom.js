@@ -152,6 +152,18 @@ $('#twenty_per').keyup(function(){
 	var chips_reclaim = $('#chips_reclaim').val();
 	var net_material_amount = solid_amount-chips_reclaim;
 	$('#net_material_amount').val(net_material_amount.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //calculate rod rate end
 
@@ -178,6 +190,41 @@ $('#finish_wait').keyup(function(){
 	var chips_reclaim = $('#chips_reclaim').val();
 	var net_material_amount = solid_amount-chips_reclaim;
 	$('#net_material_amount').val(net_material_amount.toFixed(3));
+
+	var finish_wait = $('#finish_wait').val();
+	$('#wait_per_100_pcs').val(finish_wait);
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var platting_kg = $('#platting_kg').val();
+	var finish_wait = $('#finish_wait').val();
+	var platting_amount = platting_kg*finish_wait;
+	$('#platting_amount').val(platting_amount);
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //calculate chips wait end
 
@@ -198,6 +245,23 @@ $('#solid_wait').keyup(function(){
 	var chips_reclaim = $('#chips_reclaim').val();
 	var net_material_amount = solid_amount-chips_reclaim;
 	$('#net_material_amount').val(net_material_amount.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
+
+	var quentity = $('#quentity').val();
+	var solid_wait = $('#solid_wait').val();
+	var rod_kg = quentity*solid_wait/100;
+	$('#rod_kg').val(rod_kg);
 });
 //autofill solid amount end
 
@@ -212,6 +276,18 @@ $('#chips_rate').keyup(function(){
 	var chips_reclaim = $('#chips_reclaim').val();
 	var net_material_amount = solid_amount-chips_reclaim;
 	$('#net_material_amount').val(net_material_amount.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //autofill chips reclaim end
 
@@ -251,6 +327,47 @@ $('#pallet_cycle_time').keyup(function(){
 	var pcs_per_hour = $('#pcs_per_hour').val();
 	var kg_per_hour = per_pcs_labour*pcs_per_hour;
 	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var quentity = $('#quentity').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var days = quentity/pcs_per_23_hrs;
+	$('#days').val(days.toFixed(3));
+
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	$('#cnc_production_count').val(pcs_per_hour);
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 
 $('#piece_per_pallete').keyup(function(){
@@ -288,6 +405,47 @@ $('#piece_per_pallete').keyup(function(){
 	var pcs_per_hour = $('#pcs_per_hour').val();
 	var kg_per_hour = per_pcs_labour*pcs_per_hour;
 	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var quentity = $('#quentity').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var days = quentity/pcs_per_23_hrs;
+	$('#days').val(days.toFixed(3));
+
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	$('#cnc_production_count').val(pcs_per_hour);
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //autofill one piece cycle time end
 
@@ -322,6 +480,47 @@ $('#time_of_mfg').keyup(function(){
 	var pcs_per_hour = $('#pcs_per_hour').val();
 	var kg_per_hour = per_pcs_labour*pcs_per_hour;
 	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var quentity = $('#quentity').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var days = quentity/pcs_per_23_hrs;
+	$('#days').val(days.toFixed(3));
+
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	$('#cnc_production_count').val(pcs_per_hour);
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //auto fill total pcs end
 
@@ -351,6 +550,47 @@ $('#time_of_mfg').keyup(function(){
 	var pcs_per_hour = $('#pcs_per_hour').val();
 	var kg_per_hour = per_pcs_labour*pcs_per_hour;
 	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var quentity = $('#quentity').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var days = quentity/pcs_per_23_hrs;
+	$('#days').val(days.toFixed(3));
+
+	var pcs_per_hour = $('#pcs_per_hour').val();
+	$('#cnc_production_count').val(pcs_per_hour);
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //auto fill pcs per hour end
 
@@ -375,6 +615,44 @@ $('#per_days_hour').keyup(function(){
 	var pcs_per_hour = $('#pcs_per_hour').val();
 	var kg_per_hour = per_pcs_labour*pcs_per_hour;
 	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var quentity = $('#quentity').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var days = quentity/pcs_per_23_hrs;
+	$('#days').val(days.toFixed(3));
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //auto fill pcs per 23 hour end
 
@@ -394,6 +672,39 @@ $('#month_per_day').keyup(function(){
 	var pcs_per_hour = $('#pcs_per_hour').val();
 	var kg_per_hour = per_pcs_labour*pcs_per_hour;
 	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //auto fill total pcs per 25 days end
 
@@ -408,6 +719,42 @@ $('#cnc_exp_month').keyup(function(){
 	var pcs_per_hour = $('#pcs_per_hour').val();
 	var kg_per_hour = per_pcs_labour*pcs_per_hour;
 	$('#kg_per_hour').val(kg_per_hour.toFixed(3));
+
+	var wait_per_100_pcs = $('#wait_per_100_pcs').val();
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var labour_per_kg = (per_pcs_labour*100)/wait_per_100_pcs;
+	$('#labour_per_kg').val(labour_per_kg);
+
+	var labour_per_kg = $('#labour_per_kg').val();
+	$('#labour_cost').val(labour_per_kg);
+
+	var cnc_exp_month = $('#cnc_exp_month').val();
+	$('#machine_expense').val(cnc_exp_month);
+
+	var per_pcs_labour = $('#per_pcs_labour').val();
+	var total_labour = per_pcs_labour*100;
+	$('#total_labour').val(total_labour);
+
+	var total_labour = $('#total_labour').val();
+	var pf_20_per = (total_labour*20)/100;
+	$('#pf_20_per').val(pf_20_per);
+
+	var pf_20_per = $('#pf_20_per').val();
+	var total_labour = $('#total_labour').val();
+	var total_labour_pf = +pf_20_per + +total_labour;
+	$('#total_labour_pf').val(total_labour_pf.toFixed(3));
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
 });
 //auto fill per pcs labour end
 
@@ -428,4 +775,143 @@ $('#one_piece_cycle_time').keyup(function(){
 	$('#total_pcs').val(total_pcs.toFixed(3));
 });
 //add dependency for one peace cycle time end
+
+$('#quentity').keyup(function(){
+	var quentity = $('#quentity').val();
+	var pcs_per_23_hrs = $('#pcs_per_23_hrs').val();
+	var days = quentity/pcs_per_23_hrs;
+	$('#days').val(days.toFixed(3));
+
+	var days = $('#days').val();
+	var holidays = $('#holidays').val();
+	var weekly_off = $('#weekly_off').val();
+	var start_date = $('#start_date').val().split("/");
+	days = parseInt(days, 10);
+	holidays = parseInt(holidays, 10);
+	weekly_off = parseInt(weekly_off, 10);
+	var myDate = new Date(start_date[2], start_date[1], start_date[0]);
+	myDate.setDate(myDate.getDate() + holidays + days + weekly_off);
+	var dd = myDate.getDate();
+	var mm = myDate.getMonth();
+	var yyyy = myDate.getFullYear();
+	if(dd<10){
+	    dd='0'+dd; //day formater
+	}
+	if(mm<10){
+	    mm='0'+mm; //month formater
+	}
+	$('#end_date').val(dd+'/'+mm+'/'+yyyy);
+});
+
+$('#holidays').keyup(function(){
+	var days = $('#days').val();
+	var holidays = $('#holidays').val();
+	var weekly_off = $('#weekly_off').val();
+	var start_date = $('#start_date').val().split("/");
+	days = parseInt(days, 10);
+	holidays = parseInt(holidays, 10);
+	weekly_off = parseInt(weekly_off, 10);
+	var myDate = new Date(start_date[2], start_date[1], start_date[0]);
+	myDate.setDate(myDate.getDate() + holidays + days + weekly_off);
+	var dd = myDate.getDate();
+	var mm = myDate.getMonth();
+	var yyyy = myDate.getFullYear();
+	if(dd<10){
+	    dd='0'+dd; //day formater
+	}
+	if(mm<10){
+	    mm='0'+mm; //month formater
+	}
+	$('#end_date').val(dd+'/'+mm+'/'+yyyy);
+});
+
+$('#weekly_off').keyup(function(){
+	var days = $('#days').val();
+	var holidays = $('#holidays').val();
+	var weekly_off = $('#weekly_off').val();
+	var start_date = $('#start_date').val().split("/");
+	days = parseInt(days, 10);
+	holidays = parseInt(holidays, 10);
+	weekly_off = parseInt(weekly_off, 10);
+	var myDate = new Date(start_date[2], start_date[1], start_date[0]);
+	myDate.setDate(myDate.getDate() + holidays + days + weekly_off);
+	var dd = myDate.getDate();
+	var mm = myDate.getMonth();
+	var yyyy = myDate.getFullYear();
+	if(dd<10){
+	    dd='0'+dd; //day formater
+	}
+	if(mm<10){
+	    mm='0'+mm; //month formater
+	}
+	$('#end_date').val(dd+'/'+mm+'/'+yyyy);
+});
+
+$('#start_date').keyup(function(){
+	var days = $('#days').val();
+	var holidays = $('#holidays').val();
+	var weekly_off = $('#weekly_off').val();
+	var start_date = $('#start_date').val().split("/");
+	days = parseInt(days, 10);
+	holidays = parseInt(holidays, 10);
+	weekly_off = parseInt(weekly_off, 10);
+	var myDate = new Date(start_date[2], start_date[1], start_date[0]);
+	myDate.setDate(myDate.getDate() + holidays + days + weekly_off);
+	var dd = myDate.getDate();
+	var mm = myDate.getMonth();
+	var yyyy = myDate.getFullYear();
+	if(dd<10){
+	    dd='0'+dd; //day formater
+	}
+	if(mm<10){
+	    mm='0'+mm; //month formater
+	}
+	$('#end_date').val(dd+'/'+mm+'/'+yyyy);
+});
+
+$('#platting_kg').keyup(function(){
+	var platting_kg = $('#platting_kg').val();
+	var finish_wait = $('#finish_wait').val();
+	var platting_amount = platting_kg*finish_wait;
+	$('#platting_amount').val(platting_amount);
+
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
+});
+
+$('#extra_charge').keyup(function(){
+	var extra_charge = $('#extra_charge').val();
+	var platting_amount = $('#platting_amount').val();
+	var total_labour_pf = $('#total_labour_pf').val();
+	var net_material_amount = $('#net_material_amount').val();
+	var material_vabour_cost = +extra_charge + +platting_amount + +total_labour_pf + +net_material_amount;
+	$('#material_vabour_cost').val(material_vabour_cost);
+
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
+});
+
+$('#final_inr').keyup(function(){
+	var final_inr = $('#final_inr').val();
+	var material_vabour_cost = $('#material_vabour_cost').val();
+	var percentage = final_inr*100/material_vabour_cost-100;
+	$('#percentage').val(percentage);
+});
+$('#quentity').keyup(function(){
+	var quentity = $('#quentity').val();
+	var solid_wait = $('#solid_wait').val();
+	var rod_kg = quentity*solid_wait/100;
+	$('#rod_kg').val(rod_kg);
+});
 //script for cost calculation sheet end

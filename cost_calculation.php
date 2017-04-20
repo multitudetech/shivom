@@ -200,6 +200,12 @@
 				</div>
 				<div class="col-md-2">
 				    <div class="form-group">
+				    	<label class="text-nowrap" for="quentity">Quentity:</label>
+						<input type="text" class="form-control input-sm" id="quentity" name="quentity" placeholder="Quentity" />
+				    </div>
+				</div>
+				<div class="col-md-2">
+				    <div class="form-group">
 				    	<label class="text-nowrap" for="days">Days:</label>
 						<input type="text" class="form-control input-sm" id="days" name="days" placeholder="Days" />
 				    </div>
@@ -221,20 +227,20 @@
 				<div class="col-md-2">
 				    <div class="form-group">
 				    	<label class="text-nowrap" for="start_date">Start Date:</label>
-						<input type="text" class="form-control input-sm" id="start_date" name="start_date" placeholder="Start Date" />
+						<input type="text" class="form-control input-sm" id="start_date" name="start_date" placeholder="DD/MM/YYYY" />
 				    </div>
 				</div>
 				<div class="col-md-2">
 				    <div class="form-group">
 				    	<label class="text-nowrap" for="end_date">End Date:</label>
-						<input type="text" class="form-control input-sm" id="end_date" name="end_date" placeholder="End Date" />
+						<input type="text" class="form-control input-sm" id="end_date" name="end_date" placeholder="DD/MM/YYYY" />
 				    </div>
 				</div>
 			</div>
 			<!-- Part two over -->
 
 			<!-- Part three start -->
-			<!-- <div class="col-md-12 row">
+			<div class="col-md-12 row">
 				<div class="col-md-2">
 				    <div class="form-group">
 				    	<label class="text-nowrap" for="cnc_production_count">CNC Production Pcs/Hour:</label>
@@ -329,7 +335,7 @@
 						<input type="text" class="form-control input-sm" id="rod_kg" name="rod_kg" placeholder="Rod Kg" />
 				    </div>
 				</div>
-			</div> -->
+			</div>
 		</form>
 	</div>
 	<script src="js/custom.js"></script>
