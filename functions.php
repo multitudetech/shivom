@@ -23,7 +23,12 @@ function error_drg(){
 
 //success redirect
 function success(){
-	header("Location: http://localhost:8081/shivom/index.php");
+	if(!isset($_SERVER['HTTP_REFERER'])){
+		header('Location: ' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+	}
+	else{
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+	}
 	exit();	
 }
 

@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +13,15 @@
 <script src="js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body class="">
+	<?php include "navbar.php"; ?>
 	<h3>Cost Calculation</h3>
 	<div class="col-md-12">
-		<form method="post" action="store_data.php">
+		<?php if(isset($_SESSION['error'])&&$_SESSION['error']!=""){ ?>
+		<div class="alert alert-danger">
+		  	<?php echo $_SESSION['error']; session_destroy(); ?>
+		</div>
+		<?php } ?>
+		<form method="post" action="store_cost_calculation.php">
 			<div class="col-md-12 row">
 				<div class="col-md-2">
 					<div class="form-group">
@@ -29,19 +38,51 @@
 				<div class="col-md-2">
 				    <div class="form-group">
 				    	<label for="drawing_no">Drawign No:</label>
-						<input type="text" class="form-control input-sm" id="rod_size" name="rod_size" placeholder="Rod Size" />
+						<input type="text" class="form-control input-sm" id="drawing_no" name="drawing_no" placeholder="Drawing No" />
+				    </div>
+				</div>
+			</div>
+			<div class="col-md-12 row">
+				<div class="col-md-2">
+				    <div class="form-group">
+				    	<label for="basic_rate">Basic Rate:</label>
+						<input type="text" class="form-control input-sm" id="basic_rate" name="basic_rate" placeholder="Basic Rate" />
+				    </div>
+				</div>
+				<div class="col-md-2">
+				    <div class="form-group">
+				    	<label for="job_charge">Job Charge:</label>
+						<input type="text" class="form-control input-sm" id="job_charge" name="job_charge" placeholder="Job Charge" />
+				    </div>
+				</div>
+				<div class="col-md-2">
+				    <div class="form-group">
+				    	<label for="size_premimum">Size Premium:</label>
+						<input type="text" class="form-control input-sm" id="size_premimum" name="size_premimum" placeholder="Size Premium" />
+				    </div>
+				</div>
+				<div class="col-md-2">
+				    <div class="form-group">
+				    	<label for="loe">LOE:</label>
+						<input type="text" class="form-control input-sm" id="loe" name="loe" placeholder="LOE" />
+				    </div>
+				</div>
+				<div class="col-md-2">
+				    <div class="form-group">
+				    	<label for="holo">HOLO:</label>
+						<input type="text" class="form-control input-sm" id="holo" name="holo" placeholder="HOLO" />
 				    </div>
 				</div>
 				<div class="col-md-2">
 				    <div class="form-group">
 				    	<label for="twenty_per">2.20%:</label>
-						<input type="text" class="form-control input-sm" id="twenty_per" name="twenty_per" placeholder="2.20%" />
+						<input type="text" class="form-control input-sm" id="twenty_per" name="twenty_per" placeholder="2.20%" tabindex = "-1" />
 				    </div>
 				</div>
 				<div class="col-md-2">
 				    <div class="form-group">
 				    	<label for="rod_rate">Rod Rate:</label>
-						<input type="text" class="form-control input-sm" id="rod_rate" name="rod_rate" placeholder="Rod Rate" />
+						<input type="text" class="form-control input-sm" id="rod_rate" name="rod_rate" placeholder="Rod Rate" tabindex = "-1" />
 				    </div>
 				</div>
 				<div class="col-md-2">
@@ -333,6 +374,11 @@
 				    <div class="form-group">
 				    	<label for="rod_kg" class="text-nowrap">Rod Kg:</label>
 						<input type="text" class="form-control input-sm" id="rod_kg" name="rod_kg" placeholder="Rod Kg" />
+				    </div>
+				</div>
+				<div class="col-md-2">
+				    <div class="form-group">
+						<input type="submit" class="form-control input-sm" id="submit" name="submit" value="submit" />
 				    </div>
 				</div>
 			</div>
