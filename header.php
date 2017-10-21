@@ -64,10 +64,10 @@ include_once 'includes/check_login.php';
                	<?php if($_SESSION['role']=='1'){ ?>
                     <li class="active"><a href="">projects <span class="sr-only">(current)</span></a></li>
                 <?php }elseif($_SESSION['role']=='2'){ ?>
-                	<li class="active"><a href="">Activity <span class="sr-only">(current)</span></a></li>
+                	<li class="active"><a href="work_order.php">WO <span class="sr-only"></span></a></li>
+                    <li class="active"><a href="machine.php">Machine <span class="sr-only"></span></a></li>
                 <?php } ?>
                     <li><a href="reports.php">reports</a></li>
-                    <li><a href="completedprojects.php">Completed Projects</a></li>
                     <li class="log_btn"><a href="logout.php">sign out</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
