@@ -9,6 +9,9 @@ if($_SESSION['role']==$role_id_user1){
 	elseif(isset($_POST['editwo'])){
 		include_once 'includes/editwo.php';
 	}
+	elseif(isset($_POST['delete'])){
+		include_once 'includes/deletewo.php';
+	}
 
 	//layouts
 	if(isset($_GET['editwo'])){

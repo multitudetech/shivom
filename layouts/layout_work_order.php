@@ -45,8 +45,8 @@ $get_wo_detail = get_wo_list_detail();
                                         <td><?= $data['audit_created_date'] ?></td>
                                         <td>
                                             <a href="work_order.php?editwo&id=<?= $data['id'] ?>" class="btn btn-default btn-fa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <a href="" class="btn btn-default btn-fa"><i class="fa fa-files-o" aria-hidden="true"></i></a>
-                                            <a href="" class="btn btn-default btn-fa delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <!-- <a href="" class="btn btn-default btn-fa"><i class="fa fa-files-o" aria-hidden="true"></i></a> -->
+                                            <a onclick="delete_wo(<?= $data['id'] ?>)" class="btn btn-default btn-fa delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
