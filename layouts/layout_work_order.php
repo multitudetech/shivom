@@ -9,14 +9,14 @@ $get_wo_detail = get_wo_list_detail();
                 <div class="row space30">
                     <div class="col-md-6 col-sm-6">
                         <h1 class="main_title">Work Order</h1>
-                    </div>                              
+                    </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="header_btn text-right">
-                            <a class="btn btn-default btn_collapse collapsed" role="button" data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseProjects"><i class="fa fa-plus" aria-hidden="true"></i> new workorder</a>
+                            <a class="btn btn-default btn_collapse collapsed" role="button" data-toggle="collapse" href="work_order.php?addwo" aria-expanded="false" aria-controls="collapseProjects"><i class="fa fa-plus" aria-hidden="true"></i> new workorder</a>
                         </div>
                     </div>
                 </div>
-
+                <?= getMessage(); ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -44,9 +44,9 @@ $get_wo_detail = get_wo_list_detail();
                                         <td><?= $data['drawing_no'] ?></td>
                                         <td><?= $data['audit_created_date'] ?></td>
                                         <td>
-                                            <a href="edit-project.html" class="btn btn-default btn-fa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <a href="#" class="btn btn-default btn-fa"><i class="fa fa-files-o" aria-hidden="true"></i></a>
-                                            <a href="#" class="btn btn-default btn-fa delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a href="work_order.php?editwo&id=<?= $data['id'] ?>" class="btn btn-default btn-fa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a href="" class="btn btn-default btn-fa"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                            <a href="" class="btn btn-default btn-fa delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
