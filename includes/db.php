@@ -1,7 +1,11 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == ''){
-	
-}	else {
+if ($_SERVER['HTTP_HOST'] == 'multitudetech.com' || $_SERVER['HTTP_HOST'] == 'www.multitudetech.com' || $_SERVER['HTTP_HOST'] == 'shivom.multitudetech.com'){
+	$db_username = "u197245873_shiv";
+	$db_password = "A3P6m6fs9Hit";
+	$db_name = "u197245873_shiv";
+	$db_host = "localhost";
+}
+else {
  	$db_username = "root";
 	$db_password = "root";
 	$db_name = "shivom";
