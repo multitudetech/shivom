@@ -12,6 +12,9 @@ if($_SESSION['role']==$role_id_user1){
 	elseif(isset($_POST['delete'])){
 		include_once 'includes/deletewo.php';
 	}
+	elseif(isset($_POST['copy'])){
+		include_once 'includes/copywo.php';
+	}
 
 	//layouts
 	if(isset($_GET['editwo'])){
