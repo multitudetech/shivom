@@ -1,5 +1,18 @@
 <?php
-$get_wo_detail = get_wo_list_detail();
+$start_date = "";
+$end_date = "";
+$ampl_part_no = "";
+if(isset($_POST['search'])){
+    $_data = $_POST;
+    unset($_POST);
+    $start_date = $_data['start_date'];
+    $end_date = $_data['end_date'];
+    $ampl_part_no = $_data['ampl_part_no'];
+    $get_wo_detail = get_wo_filter_detail($_data);
+}
+else{
+    $get_wo_detail = get_wo_list_detail();
+}
 ?>
 <section class="">
     <div class="container">
@@ -25,18 +38,18 @@ $get_wo_detail = get_wo_list_detail();
                                     <label>Select Date Range</label>
                                     <div id="reportrange" class="date_range_picker" class="pull-right">
                                         <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                        <span></span> <i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
-                                        <input type="hidden" id="start_date" name="start_date">
-                                        <input type="hidden" id="end_date" name="end_date">
+                                        <span><?= $start_date." - ".$end_date ?></span> <i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
+                                        <input type="hidden" id="start_date" name="start_date" value="<?= $start_date ?>">
+                                        <input type="hidden" id="end_date" name="end_date" value="<?= $end_date ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>AMPL Part No.</label>
-                                    <input type="text" name="ampl_part_no" class="form-control">
+                                    <input type="text" name="ampl_part_no" class="form-control" value="<?= $ampl_part_no ?>">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label style="display: block;">&nbsp;</label>
-                                    <button type="button" class="btn btn-default">Search</button>
+                                    <button type="submit" name="search" class="btn btn-default">Search</button>
                                 </div>
                             </div>
                         </form>

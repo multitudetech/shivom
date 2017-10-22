@@ -33,7 +33,7 @@ $(function() {
     var end = moment();
 
     function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        $('#reportrange span').html(start.format('D-MM-YYYY') + ' - ' + end.format('D-MM-YYYY'));
         $('#start_date').val(start.format('D-MM-YYYY'));
         $('#end_date').val(end.format('D-MM-YYYY'));
     }
@@ -51,6 +51,6 @@ $(function() {
         }
     }, cb);
 
-    cb(start, end);
+    //cb(start, end);
     
 });
