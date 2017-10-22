@@ -17,6 +17,31 @@ $get_wo_detail = get_wo_list_detail();
                     </div>
                 </div>
                 <?= getMessage(); ?>
+                <div class="row">                            
+                    <div class="col-md-12">                                
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label>Select Date Range</label>
+                                    <div id="reportrange" class="date_range_picker" class="pull-right">
+                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                        <span></span> <i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
+                                        <input type="hidden" id="start_date" name="start_date">
+                                        <input type="hidden" id="end_date" name="end_date">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>AMPL Part No.</label>
+                                    <input type="text" name="ampl_part_no" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label style="display: block;">&nbsp;</label>
+                                    <button type="button" class="btn btn-default">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
