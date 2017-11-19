@@ -1,13 +1,13 @@
 <?php
-$start_date = "";
-$end_date = "";
+$drawing_no = "";
 $ampl_part_no = "";
 if(isset($_POST['search'])){
     $_data = $_POST;
     unset($_POST);
-    $start_date = $_data['start_date'];
-    $end_date = $_data['end_date'];
+    // $start_date = $_data['start_date'];
+    // $end_date = $_data['end_date'];
     $ampl_part_no = $_data['ampl_part_no'];
+    $drawing_no = $_data['drawing_no'];
     $get_wo_detail = get_wo_filter_detail($_data);
 }
 else{
@@ -34,7 +34,7 @@ else{
                     <div class="col-md-12">                                
                         <form method="post">
                             <div class="row">
-                                <div class="col-md-4 form-group">
+                                <!-- <div class="col-md-4 form-group">
                                     <label>Select Date Range</label>
                                     <div id="reportrange" class="date_range_picker" class="pull-right">
                                         <i class="fa fa-calendar-o" aria-hidden="true"></i>
@@ -42,14 +42,19 @@ else{
                                         <input type="hidden" id="start_date" name="start_date" value="<?= $start_date ?>">
                                         <input type="hidden" id="end_date" name="end_date" value="<?= $end_date ?>">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-4 form-group">
                                     <label>AMPL Part No.</label>
                                     <input type="text" name="ampl_part_no" class="form-control" value="<?= $ampl_part_no ?>">
+                                    <!-- <input type="text" name="ampl_part_no" class="form-control" value="<?= $_SERVER['REMOTE_ADDR'] ?>"> -->
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Drawing No.</label>
+                                    <input type="text" name="drawing_no" class="form-control" value="<?= $drawing_no ?>">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label style="display: block;">&nbsp;</label>
-                                    <button type="submit" name="search" class="btn btn-default">Search</button>
+                                    <button type="submit" name="search" class="btn btn-default" style='margin-top: 24px'>Search</button>
+                                    <button type="submit" name="reset" class="btn btn-default" style='margin-top: 24px;background: #fff;color:#5caf91'>Reset</button>
                                 </div>
                             </div>
                         </form>
@@ -84,7 +89,7 @@ else{
                                         <td>
                                             <a href="work_order.php?editwo&id=<?= $data['id'] ?>" class="btn btn-default btn-fa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                             <a onclick="copy_wo(<?= $data['id'] ?>)" class="btn btn-default btn-fa"><i class="fa fa-files-o" aria-hidden="true"></i></a>
-                                            <a onclick="delete_wo(<?= $data['id'] ?>)" class="btn btn-default btn-fa delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <!-- <a onclick="delete_wo(<?= $data['id'] ?>)" class="btn btn-default btn-fa delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
                                         </td>
                                     </tr>
                                 <?php } ?>

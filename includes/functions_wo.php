@@ -81,14 +81,17 @@ function fake_wo_data(){
 function get_wo_filter_detail($_data){
 	global $dbh;
 	$wh = "";
-	if($_data['start_date']!=''){
-		$wh .= " AND DATE_FORMAT(audit_created_date, '%Y-%m-%d')>='".getcustomdate($_data['start_date'])."'";
-	}
-	if($_data['end_date']!=''){
-		$wh .= " AND DATE_FORMAT(audit_created_date, '%Y-%m-%d')<='".getcustomdate($_data['end_date'])."'";
-	}
+	// if($_data['start_date']!=''){
+	// 	$wh .= " AND DATE_FORMAT(audit_created_date, '%Y-%m-%d')>='".getcustomdate($_data['start_date'])."'";
+	// }
+	// if($_data['end_date']!=''){
+	// 	$wh .= " AND DATE_FORMAT(audit_created_date, '%Y-%m-%d')<='".getcustomdate($_data['end_date'])."'";
+	// }
 	if($_data['ampl_part_no']!=''){
 		$wh .= " AND ampl_part_no LIKE '%".$_data['ampl_part_no']."%'";
+	}
+	if($_data['drawing_no']!=''){
+		$wh .= " AND drawing_no LIKE '%".$_data['drawing_no']."%'";
 	}
 
 	$sSQL = "SELECT * FROM costing_tool WHERE 1 ".$wh;

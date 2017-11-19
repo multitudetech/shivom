@@ -62,7 +62,7 @@ else{
 		</div>
 		<div class="col-md-2">
 		    <div class="form-group">
-		    	<label for="drawing_no">Drawign No:</label>
+		    	<label for="drawing_no">Drawing No:</label>
 				<input type="text" class="form-control input-sm" id="drawing_no" name="drawing_no" placeholder="Drawing No" value="<?= $data['drawing_no'] ?>" />
 		    </div>
 		</div>
@@ -266,8 +266,8 @@ else{
 		</div>
 		<div class="col-md-2">
 		    <div class="form-group">
-		    	<label class="text-nowrap" for="quentity">Quentity:</label>
-				<input type="text" class="form-control input-sm" id="quentity" name="quentity" placeholder="Quentity" value="<?= $data['quentity'] ?>" />
+		    	<label class="text-nowrap" for="quentity">Quantity:</label>
+				<input type="text" class="form-control input-sm" id="quentity" name="quentity" placeholder="Quantity" value="<?= $data['quentity'] ?>" />
 		    </div>
 		</div>
 		<div class="col-md-2">
