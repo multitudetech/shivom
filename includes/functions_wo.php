@@ -22,6 +22,7 @@ function get_wo_list_detail(){
 }
 
 function fake_wo_data(){
+	$data1['maqchine_id'] = "";
 	$data1['ampl_part_no'] = "";
 	$data1['rod_size'] = "";
 	$data1['drawing_no'] = "";

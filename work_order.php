@@ -1,6 +1,7 @@
 <?php
 include_once 'header.php';
 include_once 'includes/functions_wo.php';
+include_once 'includes/functions_machine.php';
 if($_SESSION['role']==$role_id_user1){
 	//functionality
 	if(isset($_POST['addwo'])){
@@ -14,6 +15,9 @@ if($_SESSION['role']==$role_id_user1){
 	}
 	elseif(isset($_POST['copy'])){
 		include_once 'includes/copywo.php';
+	}
+	elseif(isset($_POST['revised_wo'])){
+		include_once 'includes/revised_wo.php';
 	}
 
 	//layouts

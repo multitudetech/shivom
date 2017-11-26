@@ -1,5 +1,6 @@
 <?php
 $valid_wo = true;
+$machine_data = get_machine_detail();
 if(isset($_GET['editwo'])){
 	if(is_numeric($_GET['id'])&&$_GET['id']>0){
 		$_id = $_GET['id'];
@@ -14,6 +15,25 @@ if(isset($_GET['editwo'])){
 }
 else{
 	$data = fake_wo_data();
+}
+
+function create_custom_dropdown($data, $_selected = null){
+	$options = '';
+	if($_selected!=''){
+		foreach ($data as $d) {
+			$options .= '<option value="'.$d['id'].'"';
+			if($_selected==$d['id']){
+				$options .= 'selected=selected';
+			}
+			$options .= '>'.$d['name'].'</option>';
+		}
+	}
+	else{
+		foreach ($data as $d) {
+			$options .= '<option value="'.$d['id'].'" data-price="'.$d['month_price'].'">'.$d['machine_name'].'</option>';
+		}
+	}
+	return $options;
 }
 ?>
 <section class="">
@@ -46,7 +66,15 @@ else{
 <form method="post" action="work_order.php">
 	<?php if(isset($_GET['editwo'])){ ?>
 	<input type="hidden" name="id" value="<?= $data['id'] ?>">
+	<div class="col-md-12 row">
+		<div class="col-md-2">
+			<div class="form-group">
+		    	<button class="btn btn-default btn-varient" name="revised_wo" style="margin-left: 0;">Add Revised WO</button>
+		    </div>
+		</div>
 	<?php } ?>
+	
+	</div>
 	<div class="col-md-12 row">
 		<div class="col-md-2">
 			<div class="form-group">
@@ -165,6 +193,18 @@ else{
 	</div>
 	<div class="col-md-12 row">
 		<div class="col-md-2">
+			<div class="form-group">
+			<input type="hidden" id='machine_id' name='machine_id' value = "<?= $data['machine_id'] ?>">
+				<select id="machine_options" class="form-control" onchange='SetMachineValue();'>
+				<option>-- Select Machine --</option>
+					<?php
+					print_r(create_custom_dropdown($machine_data));?>
+				</select>
+		    </div>
+		</div>
+	</div>
+	<div class="col-md-12 row">
+		<div class="col-md-2">
 		    <div class="form-group">
 		    	<label class="text-nowrap" for="pallet_cycle_time">Pallet Cycle Time:</label>
 				<input type="text" class="form-control input-sm" id="pallet_cycle_time" name="pallet_cycle_time" placeholder="Pallet Cycle Time" value="<?= $data['pallet_cycle_time'] ?>" />
@@ -235,7 +275,7 @@ else{
 		<div class="col-md-2">
 		    <div class="form-group">
 		    	<label class="text-nowrap" for="cnc_exp_month">CNC EXP. Month:</label>
-				<input type="text" class="form-control input-sm" id="cnc_exp_month" name="cnc_exp_month" placeholder="Total Pcs 25 Days" value="<?= $data['cnc_exp_month'] ?>" />
+				<input type="text" class="form-control input-sm" id="cnc_exp_month" name="cnc_exp_month" placeholder="CNC EXP. Month" value="<?= $data['cnc_exp_month'] ?>" />
 		    </div>
 		</div>
 		<div class="col-md-2">
@@ -414,3 +454,32 @@ else{
 	</div>
 </form>
 </section>
+
+</script><script src="js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if($('#machine_id').val() > 0)
+	{
+		$('#machine_options').val($('#machine_id').val());
+	}
+})
+	function SetMachineValue()
+	{
+		var machineId = $('#machine_options option:selected').val();
+		var monthPrice = $('#machine_options option:selected').attr('data-price');
+		if(machineId > 0)
+		{
+			$('#machine_id').val(machineId);
+		}else{
+			$('#machine_id').val('');
+		}
+		if(monthPrice > 0)
+		{
+			$('#cnc_exp_month').val(monthPrice);
+		}
+		else
+		{
+			$('#cnc_exp_month').val('');
+		}
+	}
+</script>

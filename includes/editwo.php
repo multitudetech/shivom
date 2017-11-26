@@ -2,6 +2,7 @@
 $_data = $_POST;
 unset($_POST);
 if(isset($_data['id'])&&$_data['id']>0&&is_numeric($_data['id'])){
+	$data1['machine_id'] = $_data['machine_id'];
 	$data1['ampl_part_no'] = $_data['ampl_part_no'];
 	$data1['rod_size'] = $_data['rod_size'];
 	$data1['drawing_no'] = $_data['drawing_no'];
