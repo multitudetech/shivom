@@ -1,12 +1,26 @@
 <?php
 $valid_wo = true;
 $machine_data = get_machine_detail();
+$revised_data = array();
 if(isset($_GET['editwo'])){
 	if(is_numeric($_GET['id'])&&$_GET['id']>0){
 		$_id = $_GET['id'];
-		$data = get_wo_detail_by_id($_id);
+		if(isset($_GET['revised'])){
+			$data = get_revised_wo_detail_by_id($_id);
+			$check_revised_id = $data['costing_tool_id'];
+			$oreginal_wo_id = $data['costing_tool_id'];
+		}
+		else{
+			$data = get_wo_detail_by_id($_id);
+			$check_revised_id = $_id;
+			$oreginal_wo_id = $_id;
+		}
 		if(count($data)==0){
 			$valid_wo = false;
+		}
+		else{
+			//fetch revised WO data
+			$revised_data = get_revised_wo_detail($check_revised_id);
 		}
 	}
 	else{
@@ -63,31 +77,43 @@ function create_custom_dropdown($data, $_selected = null){
             </div>
         </div>
     </div>
-	<div class="row col-md-12">
-        <div class="col-md-12" >
-            <ul class="nav nav-tabs" role="tablist" id="tabs">
-                <li role="presentation" class="active"><a href="#original_work_order" aria-controls="original_work_order" role="tab" data-toggle="tab">Original</a></li>
-                <li role="presentation"><a href="#past_req_wo" aria-controls="past_req_wo" role="tab" data-toggle="tab">PAST REQ WO</a></li>
-            </ul>
-        </div>
+    <?php
+    if(count($revised_data)>0){
+    ?>
+    <div class="row container">
+    	<div class="col-md-12">
+    		<a href="work_order.php?editwo&id=<?= $oreginal_wo_id ?>" class="btn btn-default <?= (!isset($_GET['revised']))? 'btn-varient' : '' ?>" id="revised" style="margin-left: 0;">Original</a>
+    		<?php
+    		$count = 0;
+    		foreach ($revised_data as $r_data) {
+    		$count++;
+    		?>
+    		<a href="work_order.php?editwo&revised&id=<?= $r_data['id'] ?>" class="btn btn-default <?= ($_id==$r_data['id']&&isset($_GET['revised']))? 'btn-varient' : '' ?>" id="revised" style="margin-left: 0;"><?= $r_data['audit_created_date'] ?></a>
+    		<?php
+    		}
+    		?>
+    	</div>
     </div>
-
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="original_work_order">
+    <?php
+	}
+    ?>
 	<form method="post" action="work_order.php">
 		<?php if(isset($_GET['editwo'])){ ?>
 		<input type="hidden" name="id" value="<?= $data['id'] ?>">
+		<?php } ?>
+		<?php if(isset($_GET['revised'])){ ?>
+		<input type="hidden" name="revised" value="true">
+		<?php } ?>
+		<?php if(isset($_GET['editwo'])){ ?>
 		<div class="col-md-12 row">
+			<div class="col-md-10"></div>
 			<div class="col-md-2">
 				<div class="form-group">
-				<a href="work_order.php?revisedwo&id=<?= $data['id'] ?>" class="btn btn-default btn-fa">
-			    	<button class="btn btn-default " id= "revised" name="" style="margin-left: 0;">Add Revised WO</button></a>
-			    	
+			    	<button type="button" class="btn btn-default " id="revised" onclick="revised_wo(<?= $data['id'] ?>, '<?= (isset($_GET['revised']))? "revised" : "oreginal" ?>')" style="margin-left: 0;">Add Revised WO</button>
 			    </div>
 			</div>
-		<?php } ?>
-		
 		</div>
+		<?php } ?>
 		<div class="col-md-12 row">
 			<div class="col-md-2">
 				<div class="form-group">
@@ -467,7 +493,6 @@ function create_custom_dropdown($data, $_selected = null){
 		</div>
 	</form>
 	</div>
-</div>
 </section>
 
 </script><script src="js/jquery-3.2.0.min.js"></script>

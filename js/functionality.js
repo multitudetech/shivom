@@ -109,3 +109,30 @@ $(function() {
     //cb(start, end);
     
 });
+
+function revised_wo(id, wo_type){
+  var params = new Array();
+  params['id'] = id;
+  params['type'] = wo_type;
+  params['revised'] = true;
+  if(confirm("Are you sure you want to revise "+id+" work order?")==true){
+    var method = "post";
+    var path = "work_order.php";
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+    for(var key in params) {
+      if(params.hasOwnProperty(key)) {
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", key);
+        hiddenField.setAttribute("value", params[key]);
+
+        form.appendChild(hiddenField);
+      }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+  }   
+}

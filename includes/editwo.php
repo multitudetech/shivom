@@ -60,7 +60,12 @@ if(isset($_data['id'])&&$_data['id']>0&&is_numeric($_data['id'])){
 	$tabledata = array_merge($data1, $data2);
 
 	$wh = 'id='.$_data['id'];
-	update('costing_tool', $wh, $tabledata, '', $dbh);
+	if(isset($_data['revised'])){
+		update('revised_work_order', $wh, $tabledata, '', $dbh);
+	}
+	else{
+		update('costing_tool', $wh, $tabledata, '', $dbh);
+	}
 	setMessage('WO #'.$_data['id'].' successfully edited!', 'success');
 }
 else{

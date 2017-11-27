@@ -99,4 +99,19 @@ function get_wo_filter_detail($_data){
 	$result = sql($sSQL, $dbh);
 	return $result;
 }
+
+function get_revised_wo_detail($_woid){
+	global $dbh;
+	$sSQL = "SELECT * FROM revised_work_order WHERE costing_tool_id='".$_woid."'";
+	$result = sql($sSQL, $dbh);
+	return $result;
+}
+
+function get_revised_wo_detail_by_id($_id){
+	global $dbh;
+	$sSQL = "SELECT * FROM revised_work_order WHERE id='".$_id."'";
+	$result = sql($sSQL, $dbh);
+	$result = array_shift($result);
+	return $result;
+}
 ?>
