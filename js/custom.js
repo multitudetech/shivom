@@ -358,23 +358,11 @@ $('#month_per_day').keyup(function(){
 });
 
 $('#cnc_exp_month').keyup(function(){
-	calculate_per_pcs_labour();
+	on_change_machine_exp();
+});
 
-	calculate_kg_per_hour();
-
-	calculate_labour_per_kg();
-
-	calculate_labour_cost();
-
-	calculate_machine_expense();
-
-	calculate_total_labour();
-
-	calculate_pf_20_per();
-
-	calculate_total_labour_pf();
-
-	calculate_material_vabour_cost();
+$('#machine_options').change(function(){
+	on_change_machine_exp();
 });
 
 $('#quentity').keyup(function(){
@@ -736,6 +724,26 @@ function calculate_material_vabour_cost(){
 
 	var material_vabour_cost = +net_material_amount + +total_labour_pf + +platting_amount + +extra_charge;
 	$('#material_vabour_cost').val(material_vabour_cost);
+}
+
+function on_change_machine_exp(){
+	calculate_per_pcs_labour();
+
+	calculate_kg_per_hour();
+
+	calculate_labour_per_kg();
+
+	calculate_labour_cost();
+
+	calculate_machine_expense();
+
+	calculate_total_labour();
+
+	calculate_pf_20_per();
+
+	calculate_total_labour_pf();
+
+	calculate_material_vabour_cost();
 }
 
 
