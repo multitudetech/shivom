@@ -1,6 +1,12 @@
 <?php
 $_data = $_POST;
 unset($_POST);
+//add data to WO
+$data = insertlog();
+$wo_id = insert('work_order', $data, $dbh);
+
+//add data to WO Items
+$data1['work_order_id'] = $wo_id;
 $data1['machine_id'] = $_data['machine_id'];
 $data1['ampl_part_no'] = $_data['ampl_part_no'];
 $data1['rod_size'] = $_data['rod_size'];
@@ -58,5 +64,5 @@ $data1['rod_kg'] = $_data['rod_kg'];
 $data2 = insertlog();
 $tabledata = array_merge($data1, $data2);
 
-insert('costing_tool', $tabledata, $dbh);
+insert('work_order_items', $tabledata, $dbh);
 ?>

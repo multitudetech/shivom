@@ -7,7 +7,7 @@ if($_SESSION['role']==$role_id_user1){
 	if(isset($_POST['addwo'])){
 		include_once 'includes/addwo.php';
 	}
-	elseif(isset($_POST['editwo'])){
+	elseif(isset($_POST['edititem'])){
 		include_once 'includes/editwo.php';
 	}
 	elseif(isset($_POST['delete'])){
@@ -30,6 +30,12 @@ if($_SESSION['role']==$role_id_user1){
 		include_once 'layouts/layout_detailed_work_order.php';
 	}
 	elseif(isset($_GET['revisedwo'])){
+		include_once 'layouts/layout_detailed_work_order.php';
+	}
+	elseif(isset($_GET['viewwo'])){
+		include_once 'layouts/layout_detailed_view.php';
+	}
+	elseif(isset($_GET['edititem'])){
 		include_once 'layouts/layout_detailed_work_order.php';
 	}
 	else{

@@ -2,7 +2,7 @@
 $valid_wo = true;
 $machine_data = get_machine_detail();
 $revised_data = array();
-if(isset($_GET['editwo'])){
+if(isset($_GET['edititem'])){
 	if(is_numeric($_GET['id'])&&$_GET['id']>0){
 		$_id = $_GET['id'];
 		if(isset($_GET['revised'])){
@@ -11,7 +11,7 @@ if(isset($_GET['editwo'])){
 			$oreginal_wo_id = $data['costing_tool_id'];
 		}
 		else{
-			$data = get_wo_detail_by_id($_id);
+			$data = get_wo_items_by_id($_id);
 			$check_revised_id = $_id;
 			$oreginal_wo_id = $_id;
 		}
@@ -57,10 +57,10 @@ function create_custom_dropdown($data, $_selected = null){
             	<div class="row space30">
                     <div class="col-md-6 col-sm-6">
                     	<?php
-                    	if(isset($_GET['editwo'])){
+                    	if(isset($_GET['edititem'])){
                     		if($valid_wo){
                     	?>
-                        	<h1 class="main_title"> Edit Work Order <?= $data['ampl_part_no'] ?></h1>
+                        	<h1 class="main_title">WO #<?= $data['work_order_id'] ?> Edit Item <?= $data['ampl_part_no'] ?></h1>
                         <?php
                     		}
                     		else{
@@ -98,7 +98,7 @@ function create_custom_dropdown($data, $_selected = null){
 	}
     ?>
 	<form method="post" action="work_order.php">
-		<?php if(isset($_GET['editwo'])){ ?>
+		<?php if(isset($_GET['edititem'])){ ?>
 		<input type="hidden" name="id" value="<?= $data['id'] ?>">
 		<?php } ?>
 		<?php if(isset($_GET['revised'])){ ?>
@@ -483,8 +483,8 @@ function create_custom_dropdown($data, $_selected = null){
 			<div class="col-md-2">
 			    <div class="form-group">
 					<!-- <input type="submit" class="form-control input-sm" id="submit" name="add" value="submit" /> -->
-					<?php if(isset($_GET['editwo'])){ ?>
-						<button class="btn btn-default btn-varient" name="editwo" style="margin-left: 0;">Save WO</button>
+					<?php if(isset($_GET['edititem'])){ ?>
+						<button class="btn btn-default btn-varient" name="edititem" style="margin-left: 0;">Edit Item</button>
 					<?php }else{ ?>
 						<button class="btn btn-default btn-varient" name="addwo" style="margin-left: 0;">Save WO</button>
 					<?php } ?>

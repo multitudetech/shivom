@@ -242,4 +242,19 @@ function calculatesec($_time){
 	$sec = ($time[0]*3600)+($time[1]*60)+($time[2]);
 	return $sec;
 }
+function fetch_currency_conversion(){
+	$euro_rate = getSession('euro_rate');
+	if($euro_rate==''){
+		$url = "http://api.fixer.io/latest?base=INR";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, 0);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	    $return = curl_exec ($ch);
+    	curl_close ($ch);
+    	print_r($return);
+    	echo "test";
+    	die();
+	}
+}
 ?>

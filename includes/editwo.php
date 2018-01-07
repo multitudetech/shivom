@@ -64,9 +64,9 @@ if(isset($_data['id'])&&$_data['id']>0&&is_numeric($_data['id'])){
 		update('revised_work_order', $wh, $tabledata, '', $dbh);
 	}
 	else{
-		update('costing_tool', $wh, $tabledata, '', $dbh);
+		update('work_order_items', $wh, $tabledata, '', $dbh);
 	}
-	setMessage('WO #'.$_data['id'].' successfully edited!', 'success');
+	setMessage('Item #'.$_data['id'].' successfully edited!', 'success');
 }
 else{
 	setMessage('Error! in update WO', 'success');

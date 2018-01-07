@@ -8,7 +8,14 @@ function get_wo_detail(){
 
 function get_wo_detail_by_id($_id){
 	global $dbh;
-	$sSQL = "SELECT * FROM costing_tool WHERE id='".$_id."'";
+	$sSQL = "SELECT * FROM work_order_items WHERE work_order_id='".$_id."'";
+	$result = sql($sSQL, $dbh);
+	return $result;
+}
+
+function get_wo_items_by_id($_id){
+	global $dbh;
+	$sSQL = "SELECT * FROM work_order_items WHERE id='".$_id."'";
 	$result = sql($sSQL, $dbh);
 	$result = array_shift($result);
 	return $result;
@@ -16,7 +23,7 @@ function get_wo_detail_by_id($_id){
 
 function get_wo_list_detail(){
 	global $dbh;
-	$sSQL = "SELECT id, ampl_part_no, rod_size, drawing_no, audit_created_date, audit_created_by FROM costing_tool";
+	$sSQL = "SELECT id, audit_created_date, audit_created_by FROM work_order";
 	$result = sql($sSQL, $dbh);
 	return $result;
 }
@@ -89,13 +96,13 @@ function get_wo_filter_detail($_data){
 	// 	$wh .= " AND DATE_FORMAT(audit_created_date, '%Y-%m-%d')<='".getcustomdate($_data['end_date'])."'";
 	// }
 	if($_data['ampl_part_no']!=''){
-		$wh .= " AND ampl_part_no LIKE '%".$_data['ampl_part_no']."%'";
+		$wh .= " AND T2.ampl_part_no LIKE '%".$_data['ampl_part_no']."%'";
 	}
 	if($_data['drawing_no']!=''){
-		$wh .= " AND drawing_no LIKE '%".$_data['drawing_no']."%'";
+		$wh .= " AND T2.drawing_no LIKE '%".$_data['drawing_no']."%'";
 	}
 
-	$sSQL = "SELECT * FROM costing_tool WHERE 1 ".$wh;
+	$sSQL = "SELECT T1.* FROM work_order T1 LEFT JOIN work_order_items T2 ON T1.id=T2.work_order_id WHERE 1 ".$wh;
 	$result = sql($sSQL, $dbh);
 	return $result;
 }

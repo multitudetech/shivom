@@ -48,4 +48,15 @@ function get_machine_filter_detail($_data){
 	$result = sql($sSQL, $dbh);
 	return $result;
 }
+
+function get_machine_name($_id){
+	global $dbh;
+	$wh = " AND id=".$_id;
+
+	$sSQL = "SELECT machine_name FROM machine_detail WHERE 1 ".$wh;
+	$result = sql($sSQL, $dbh);
+	$result = array_shift($result);
+	
+	return $result['machine_name'];
+}
 ?>

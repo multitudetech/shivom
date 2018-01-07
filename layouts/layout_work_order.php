@@ -67,9 +67,7 @@ else{
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>AMPL Part No.</th>
-                                        <th>Rod Size</th>
-                                        <th>Drawing No</th>
+                                        <th>WO No.</th>
                                         <th>Created At</th>
                                         <th style="width: 150px;">Action</th>
                                     </tr>
@@ -82,12 +80,10 @@ else{
                                 ?>
                                     <tr>
                                         <td><?= $record_count ?></td>
-                                        <td><?= $data['ampl_part_no'] ?></td>
-                                        <td><?= $data['rod_size'] ?></td>
-                                        <td><?= $data['drawing_no'] ?></td>
+                                        <td>WO #<?= $data['id'] ?></td>
                                         <td><?= $data['audit_created_date'] ?></td>
                                         <td>
-                                            <a href="work_order.php?editwo&id=<?= $data['id'] ?>" class="btn btn-default btn-fa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a href="work_order.php?viewwo&id=<?= $data['id'] ?>" class="btn btn-default btn-fa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                             <a onclick="copy_wo(<?= $data['id'] ?>)" class="btn btn-default btn-fa"><i class="fa fa-files-o" aria-hidden="true"></i></a>
                                             <!-- <a onclick="delete_wo(<?= $data['id'] ?>)" class="btn btn-default btn-fa delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
                                         </td>
