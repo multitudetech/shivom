@@ -70,7 +70,7 @@ function create_custom_dropdown($data, $_selected = null){
                     		die();
                     		}
                     	}else{ ?>
-                        <h1 class="main_title"> Add Work Order</h1>
+                        <h1 class="main_title"> Add WO Item</h1>
                         <?php } ?>
                     </div>
                 </div>
@@ -104,6 +104,9 @@ function create_custom_dropdown($data, $_selected = null){
 		<?php if(isset($_GET['revised'])){ ?>
 		<input type="hidden" name="revised" value="true">
 		<?php } ?>
+		<? if(isset($_GET['additem'])){ ?>
+		<input type="hidden" name="wo_id" value="<?= $_GET['id'] ?>">
+		<? } ?>
 		<?php if(isset($_GET['editwo'])){ ?>
 		<div class="col-md-12 row">
 			<div class="col-md-10"></div>
@@ -486,7 +489,7 @@ function create_custom_dropdown($data, $_selected = null){
 					<?php if(isset($_GET['edititem'])){ ?>
 						<button class="btn btn-default btn-varient" name="edititem" style="margin-left: 0;">Edit Item</button>
 					<?php }else{ ?>
-						<button class="btn btn-default btn-varient" name="addwo" style="margin-left: 0;">Save WO</button>
+						<button class="btn btn-default btn-varient" name="additem" style="margin-left: 0;">Add WO Item</button>
 					<?php } ?>
 			    </div>
 			</div>

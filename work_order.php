@@ -4,7 +4,7 @@ include_once 'includes/functions_wo.php';
 include_once 'includes/functions_machine.php';
 if($_SESSION['role']==$role_id_user1){
 	//functionality
-	if(isset($_POST['addwo'])){
+	if(isset($_POST['additem'])){
 		include_once 'includes/addwo.php';
 	}
 	elseif(isset($_POST['edititem'])){
@@ -36,6 +36,9 @@ if($_SESSION['role']==$role_id_user1){
 		include_once 'layouts/layout_detailed_view.php';
 	}
 	elseif(isset($_GET['edititem'])){
+		include_once 'layouts/layout_detailed_work_order.php';
+	}
+	elseif(isset($_GET['additem'])){
 		include_once 'layouts/layout_detailed_work_order.php';
 	}
 	else{

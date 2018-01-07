@@ -1,9 +1,15 @@
 <?php
 $_data = $_POST;
 unset($_POST);
-//add data to WO
-$data = insertlog();
-$wo_id = insert('work_order', $data, $dbh);
+if($_data['wo_id']==""){	//Check WO available
+	//create WO
+	$data = insertlog();
+	$wo_id = insert('work_order', $data, $dbh);
+}
+else{
+	//WO Available
+	$wo_id = $_data['wo_id'];
+}
 
 //add data to WO Items
 $data1['work_order_id'] = $wo_id;
