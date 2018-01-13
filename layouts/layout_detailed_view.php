@@ -2,17 +2,28 @@
 $valid_wo = false;
 if(is_numeric($_GET['id'])&&$_GET['id']>0){
 	$_id = $_GET['id'];
-	$_data = get_wo_detail_by_id($_id);
-	$check_revised_id = $_id;
-	$oreginal_wo_id = $_id;
+
+	//check for revised or oreginal WO
+	if(isset($_GET['revised'])){
+		//revised WO data
+	}
+	else{
+		//oreginal WO data
+		$_data = get_wo_detail_by_id($_id);
+		$check_revised_id = $_id;
+		$oreginal_wo_id = $_id;
+	}
 
 	if(count($_data)==0){
 		$valid_wo = false;
 	}
 	else{
 		$valid_wo = true;
+		$revised_data = get_revised_wo_detail($check_revised_id);
 	}
 }
+
+$_data_items = get_items_list($_id);
 
 if($valid_wo){
 ?>
@@ -24,15 +35,34 @@ if($valid_wo){
                     <div class="col-md-6 col-sm-6">
                         	<h1 class="main_title"> View Work Order #<?= $_id ?></h1>
                     </div>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-1">
+                		<button type="button" class="btn btn-default" style="margin-left: 0;" data-toggle="modal" data-target="#myModal">Revised WO</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        <div class="row container">
+    <?php
+    if(count($revised_data)>0){
+    ?>
+    <div class="row container">
     	<div class="col-md-12">
     		<a href="work_order.php?editwo&id=1" class="btn btn-default btn-varient" id="revised" style="margin-left: 0;">Original</a>
+    		<?php
+    		$count = 0;
+    		foreach ($revised_data as $r_data) {
+    		$count++;
+    		?>
+    		<a href="work_order.php?editwo&revised&id=<?= $r_data['id'] ?>" class="btn btn-default <?= ($_id==$r_data['id']&&isset($_GET['revised']))? 'btn-varient' : '' ?>" id="revised" style="margin-left: 0;"><?= $r_data['audit_created_date'] ?></a>
+    		<?
+    		}
+    		?>
     	</div>
     </div>
+    <?
+	}
+    ?>
 		<div class="col-md-12 row">
 			<div class="col-md-10"></div>
 			<div class="col-md-2">
@@ -405,3 +435,33 @@ else{
 echo "Invalid WO";
 }
 ?>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">WO Items</h4>
+      </div>
+      <form method="post" action="work_order.php">
+      <div class="modal-body">
+    	<div class="col-md-12">
+    		<input type="hidden" name="oreginal" value="true">
+    		<input type="hidden" name="wo_id" value="<?= $_id ?>">
+    		<div class="form-group">
+    			<? foreach($_data_items as $data_items){ ?>
+	        	<div class="checkbox">
+				    <input type="checkbox" class="form-group" name="item_ids[]" value="<?= $data_items['id'] ?>"> <?= $data_items['ampl_part_no'] ?> (<?= $data_items['drawing_no'] ?>)
+	        	</div>
+	        	<? } ?>
+	        </div>
+    	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" name="revised" class="btn btn-primary">Revise</button>
+      </div>
+  	  </form>
+    </div>
+  </div>
+</div>
