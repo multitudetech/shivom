@@ -71,14 +71,14 @@ if($valid_wo){
 		<div class="col-md-12 row">
 			<div class="col-md-10"></div>
 			<div class="col-md-2">
-				<a href="work_order.php?additem&id=<?= $_id ?>" class="btn btn-default btn-varient" id="revised" style="margin-left: 0;">Add Item</a>
+				<a href="work_order.php?additem<?= (isset($_GET['revised'])?'&revised':'') ?>&id=<?= $_id ?>" class="btn btn-default btn-varient" id="revised" style="margin-left: 0;">Add Item</a>
 			</div>
 		</div>
 		<? foreach($_data as $data){ ?>
 		<div class="col-md-12 row">
 			<div class="col-md-10"></div>
 			<div class="col-md-2">
-			    <a href="work_order.php?edititem&id=<?= $data['id'] ?>" class="btn btn-default " id="revised" style="margin-left: 0;">Edit Item</a>
+			    <a href="work_order.php?edititem<?= (isset($_GET['revised'])?'&revised':'') ?>&id=<?= $data['id'] ?>" class="btn btn-default " id="revised" style="margin-left: 0;">Edit Item</a>
 			</div>
 		</div>
 		<div class="col-md-12 row">

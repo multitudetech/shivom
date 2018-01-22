@@ -144,6 +144,14 @@ function get_revised_wo_items_by_woid($_revised_wo_id){
 	return $result;
 }
 
+function get_wo_id_from_revised_item($_item_id){
+	global $dbh;
+	$sSQL = "SELECT T1.work_order_id FROM revised_work_order T1 LEFT JOIN revised_work_order_items T2 ON T1.id=T2.revised_work_order_id WHERE T2.id=".$_item_id;
+	$result = sql($sSQL, $dbh);
+	$result = array_shift($result);
+	return $result['work_order_id'];
+}
+
 function get_items_list($_id){
 	global $dbh;
 	$sSQL = "SELECT id, ampl_part_no, drawing_no FROM work_order_items WHERE work_order_id='".$_id."'";

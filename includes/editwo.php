@@ -61,7 +61,7 @@ if(isset($_data['id'])&&$_data['id']>0&&is_numeric($_data['id'])){
 
 	$wh = 'id='.$_data['id'];
 	if(isset($_data['revised'])){
-		update('revised_work_order', $wh, $tabledata, '', $dbh);
+		update('revised_work_order_items', $wh, $tabledata, '', $dbh);
 	}
 	else{
 		update('work_order_items', $wh, $tabledata, '', $dbh);

@@ -6,9 +6,10 @@ if(isset($_GET['edititem'])){
 	if(is_numeric($_GET['id'])&&$_GET['id']>0){
 		$_id = $_GET['id'];
 		if(isset($_GET['revised'])){
-			$data = get_revised_wo_detail_by_id($_id);
-			$check_revised_id = $data['costing_tool_id'];
-			$oreginal_wo_id = $data['costing_tool_id'];
+			$data = get_revised_wo_items_by_id($_id);
+			$data['work_order_id'] = get_wo_id_from_revised_item($_id);
+			$check_revised_id = $data['work_order_id'];
+			$oreginal_wo_id = $data['work_order_id'];
 		}
 		else{
 			$data = get_wo_items_by_id($_id);
