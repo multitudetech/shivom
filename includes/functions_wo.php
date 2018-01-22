@@ -122,10 +122,18 @@ function get_revised_wo_detail_by_id($_id){
 	return $result;
 }
 
+function get_revised_wo_items_detail_wo_id($_id){
+	global $dbh;
+	$sSQL = "SELECT * FROM revised_work_order_items WHERE revised_work_order_id=".$_id;
+	$result = sql($sSQL, $dbh);
+	return $result;	
+}
+
 function get_revised_wo_items_by_id($_id){
 	global $dbh;
 	$sSQL = "SELECT * FROM revised_work_order_items WHERE id='".$_id."'";
 	$result = sql($sSQL, $dbh);
+	$result = array_shift($result);
 	return $result;
 }
 
@@ -140,6 +148,13 @@ function get_items_list($_id){
 	global $dbh;
 	$sSQL = "SELECT id, ampl_part_no, drawing_no FROM work_order_items WHERE work_order_id='".$_id."'";
 
+	$result = sql($sSQL, $dbh);
+	return $result;
+}
+
+function get_revised_items_list($_id){
+	global $dbh;
+	$sSQL = "SELECT id, ampl_part_no, drawing_no FROM revised_work_order_items WHERE revised_work_order_id='".$_id."'";
 	$result = sql($sSQL, $dbh);
 	return $result;
 }

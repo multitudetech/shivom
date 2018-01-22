@@ -6,12 +6,19 @@ if(is_numeric($_GET['id'])&&$_GET['id']>0){
 	//check for revised or oreginal WO
 	if(isset($_GET['revised'])){
 		//revised WO data
+		$revised_wo_data = get_revised_wo_detail_by_id($_id);
+		$_data = get_revised_wo_items_detail_wo_id($_id);
+		$check_revised_id = $revised_wo_data['work_order_id'];
+		$oreginal_wo_id = $revised_wo_data['work_order_id'];
+		$revised_wo_id = $_id;
+		$_data_items = get_revised_items_list($_id);
 	}
 	else{
 		//oreginal WO data
 		$_data = get_wo_detail_by_id($_id);
 		$check_revised_id = $_id;
 		$oreginal_wo_id = $_id;
+		$_data_items = get_items_list($_id);
 	}
 
 	if(count($_data)==0){
@@ -22,8 +29,6 @@ if(is_numeric($_GET['id'])&&$_GET['id']>0){
 		$revised_data = get_revised_wo_detail($check_revised_id);
 	}
 }
-
-$_data_items = get_items_list($_id);
 
 if($valid_wo){
 ?>
@@ -48,13 +53,13 @@ if($valid_wo){
     ?>
     <div class="row container">
     	<div class="col-md-12">
-    		<a href="work_order.php?editwo&id=1" class="btn btn-default btn-varient" id="revised" style="margin-left: 0;">Original</a>
+    		<a href="work_order.php?viewwo&id=<?= $oreginal_wo_id ?>" class="btn btn-default btn-varient" id="revised" style="margin-left: 0;">Original</a>
     		<?php
     		$count = 0;
     		foreach ($revised_data as $r_data) {
     		$count++;
     		?>
-    		<a href="work_order.php?editwo&revised&id=<?= $r_data['id'] ?>" class="btn btn-default <?= ($_id==$r_data['id']&&isset($_GET['revised']))? 'btn-varient' : '' ?>" id="revised" style="margin-left: 0;"><?= $r_data['audit_created_date'] ?></a>
+    		<a href="work_order.php?viewwo&revised&id=<?= $r_data['id'] ?>" class="btn btn-default <?= ($_id==$r_data['id']&&isset($_GET['revised']))? 'btn-varient' : '' ?>" id="revised" style="margin-left: 0;"><?= $r_data['audit_created_date'] ?></a>
     		<?
     		}
     		?>
@@ -446,8 +451,11 @@ echo "Invalid WO";
       <form method="post" action="work_order.php">
       <div class="modal-body">
     	<div class="col-md-12">
-    		<input type="hidden" name="oreginal" value="true">
-    		<input type="hidden" name="wo_id" value="<?= $_id ?>">
+    		<input type="hidden" name="oreginal" value="<?= (isset($_GET['revised'])? 'false' : 'true') ?>">
+    		<input type="hidden" name="wo_id" value="<?= $oreginal_wo_id ?>">
+    		<? if(isset($_GET['revised'])){ ?>
+    		<input type="hidden" name="revised_wo_id" value="<?= $revised_wo_id ?>">
+    		<? } ?>
     		<div class="form-group">
     			<? foreach($_data_items as $data_items){ ?>
 	        	<div class="checkbox">
