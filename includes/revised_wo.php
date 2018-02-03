@@ -29,6 +29,9 @@ if(isset($_data['item_ids'])&&count($_data['item_ids'])>0){
 		if(isset($data1['revised_work_order_id'])){
 			unset($data1['revised_work_order_id']);
 		}
+		if(isset($data1['work_order_id'])){
+			unset($data1['work_order_id']);
+		}
 		$data1['revised_work_order_id'] = $revised_wo_id;
 		unset($data1['id']);
 		unset($data1['audit_created_by']);
