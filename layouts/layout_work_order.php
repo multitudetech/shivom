@@ -25,7 +25,7 @@ else{
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="header_btn text-right">
-                            <a class="btn btn-default btn_collapse collapsed" role="button" data-toggle="collapse" href="work_order.php?addwo" aria-expanded="false" aria-controls="collapseProjects"><i class="fa fa-plus" aria-hidden="true"></i> new workorder</a>
+                            <a class="btn btn-default" role="button" href="work_order.php?addwo"><i class="fa fa-plus" aria-hidden="true"></i> new workorder</a>
                         </div>
                     </div>
                 </div>
