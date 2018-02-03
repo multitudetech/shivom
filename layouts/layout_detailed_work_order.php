@@ -499,7 +499,6 @@ function create_custom_dropdown($data, $_selected = null){
 	</div>
 </section>
 
-</script><script src="js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	if($('#machine_id').val() > 0)
